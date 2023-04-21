@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Programming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="verifyAge()">
+
+    <header>
+        <h1>Task Performance</h1>
+    </header>
+
+    <div class="construct">
+        <button id="30">Print 0 - 30</button>
+        <button id="40">Print even 0 - 40</button>
+        <button id="10">Print 3 multiples 40 - 10</button>
+    </div>
+
+    <section></section>
+
+</body>
+
+<script>
+
+    let age;
+    function verifyAge() {
+        do {
+            age = prompt("Please Enter Your Age: ");
+
+            if (age === null) {
+                alert("Cancelled");
+                break;
+            } else if (age === "") {
+                alert("Please Enter Your Age.");
+            } else if (isNaN(age)) {
+                alert("Please Enter a valid number.");
+            } else if (age <= 0) {
+                alert("Please Enter a valid age.");
+            }
+        } while (age === "" || isNaN(age) || age <= 0);
+
+        if (age !== null) {
+            if (age >= 25) {
+                alert("Great Youre age is 25 years old and up.");
+            } else {
+                alert("Make Sure you are 25 years old and above.");
+            }
+
+            if (age === 100) {
+                alert("Great! You are 100 years old.");
+            } else if (age > 100) {
+                alert("The entered number is " + age + ". Youre above 100.");
+            } else if (age < 100) {
+                alert("The entered number is " + age + ". Youre less than 100.");
+            }
+        }
+    }
+
+    let numberConstruct;
+    let printButton;
+
+
+    printButton = document.getElementById('30');
+    printButton.addEventListener('click', () => {
+        if (numberConstruct) {
+            let sectionElement = document.querySelector('body > section');
+            if (sectionElement) {
+                sectionElement.removeChild(numberConstruct);
+            }
+        }
+
+        numberConstruct = document.createElement('div');
+
+        for (let i = 0; i <= 30; i++) {
+            let textNode = document.createTextNode(i);
+            numberConstruct.appendChild(textNode);
+            let br = document.createElement('br');
+            numberConstruct.appendChild(br);
+        }
+
+        let sectionElement = document.querySelector('body > section');
+        sectionElement.appendChild(numberConstruct);
+    });
+
+
+    printButton = document.getElementById('40');
+    printButton.addEventListener('click', () => {
+        if (numberConstruct) {
+            let sectionElement = document.querySelector('body > section');
+            if (sectionElement) {
+                sectionElement.removeChild(numberConstruct);
+            }
+        }
+
+        numberConstruct = document.createElement('div');
+
+        for (let i = 0; i <= 40; i++) {
+            if (i % 2 === 0) {
+                let textNode = document.createTextNode(i);
+                numberConstruct.appendChild(textNode);
+                let br = document.createElement('br');
+                numberConstruct.appendChild(br);
+            }
+        }
+
+        let sectionElement = document.querySelector('body > section');
+        sectionElement.appendChild(numberConstruct);
+    });
+
+   
+    printButton = document.getElementById('10');
+    printButton.addEventListener('click', () => {
+        if (numberConstruct) {
+            let sectionElement = document.querySelector('body > section');
+            if (sectionElement) {
+                sectionElement.removeChild(numberConstruct);
+            }
+        }
+
+        numberConstruct = document.createElement('div');
+
+        for (let i = 40; i >= 10; i--) {
+            if (i % 3 === 0) {
+                let textNode = document.createTextNode(i);
+                numberConstruct.appendChild(textNode);
+                let br = document.createElement('br');
+                numberConstruct.appendChild(br);
+            }
+        }
+
+        let sectionElement = document.querySelector('body > section');
+        sectionElement.appendChild(numberConstruct);
+    });
+</script>
+</html>
